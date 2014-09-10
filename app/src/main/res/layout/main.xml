@@ -128,4 +128,21 @@
         android:layout_alignParentRight="true"
         android:onClick="cancelAlarm"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/periodSvcStart"
+        android:text="@string/period_svc_start"
+        android:layout_below="@id/buttonStopAlarm"
+        android:layout_toLeftOf="@+id/periodSvcStop"
+        android:onClick="startPeriodSvc"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@id/periodSvcStop"
+        android:text="@string/period_svc_stop"
+        android:layout_below="@id/buttonStopAlarm"
+        android:layout_alignParentRight="true"/>
+
 </RelativeLayout>

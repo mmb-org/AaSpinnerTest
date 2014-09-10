@@ -17,5 +17,7 @@
     <string name="send_msg">Send message</string>
     <string name="start_alarm">Start alarm</string>
     <string name="stop_alarm">Stop alarm</string>
+    <string name="period_svc_start">Start period svc</string>
+    <string name="period_svc_stop">Stop period svc</string>
 
 </resources>

@@ -9,6 +9,7 @@ import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,12 +36,34 @@ public class MainActivity extends Activity {
     private PendingIntent pendingIntent;
     private AlarmManager manager;
 
-    //test commit after fixing login error
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        //Start service using AlarmManager
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.SECOND, 10);
+        Intent intent = new Intent(this, TestService.class);
+        final PendingIntent pIntent = PendingIntent.getService(this, 11, intent, 0);
+
+        final AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        //for 30 min 60*60*1000
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),5*1000, pIntent);
+
+        //need to set listener to button in MainActivity as using onClick in main.xml doesn't stop AlarmManager
+        //possibly unable to identify the right PendingIntent. TODO find out how to identify PendingIntent properly
+        Button periodSvcStop = (Button) findViewById(R.id.periodSvcStop);
+        periodSvcStop.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                stopService(new Intent(getBaseContext(), TestService.class));
+                alarm.cancel(pIntent);
+            }
+        });
 
         //Retrieve a PendingIntent that will perform a broadcast
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
@@ -69,6 +92,10 @@ public class MainActivity extends Activity {
         addListenerToSpinner();
     }
 
+    public void startPeriodSvc(View V){
+        startService(new Intent(getBaseContext(), TestService.class));
+    }
+
     //set recurring alarms
     public void startAlarm(View view) {
         manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
@@ -88,8 +115,7 @@ public class MainActivity extends Activity {
 
     }
 
-    public void onClickStartSvc(View V)
-    {
+    public void onClickStartSvc(View V) {
         //start the service from here //MyService is your service class name
         startService(new Intent(this, MyService.class));
     }

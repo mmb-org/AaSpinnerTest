@@ -22,6 +22,7 @@
         </activity>
         <service android:name=".MyService" android:enabled="true"/>
         <receiver android:name=".AlarmReceiver"></receiver>
+        <service android:name=".TestService" android:enabled="true"></service>
 
     </application>
 
