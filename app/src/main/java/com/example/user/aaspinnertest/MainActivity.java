@@ -1,6 +1,8 @@
 package com.example.user.aaspinnertest;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -29,6 +31,9 @@ public class MainActivity extends Activity {
     private EditText favNoText;
     private final static String TAG = "SpinnerTest";
     public static Handler mUiHandler = null;
+    //variables for Alarm
+    private PendingIntent pendingIntent;
+    private AlarmManager manager;
 
     //test commit after fixing login error
 
@@ -36,6 +41,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        //Retrieve a PendingIntent that will perform a broadcast
+        Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
 
         mUiHandler = new Handler() {
             public void handleMessage(Message msg) {
@@ -58,6 +67,25 @@ public class MainActivity extends Activity {
         addItemsToAgeSpinner();
         addItemsToWeightSpinner();
         addListenerToSpinner();
+    }
+
+    //set recurring alarms
+    public void startAlarm(View view) {
+        manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        int interval = 10000;
+
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
+        Toast.makeText(this, "Alarm Set", Toast.LENGTH_SHORT).show();
+    }
+
+    //stop the alarms
+    public void cancelAlarm(View view) {
+        Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
+        manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        manager.cancel(pendingIntent);
+        Toast.makeText(this, "Alarm canceled", Toast.LENGTH_SHORT).show();
+
     }
 
     public void onClickStartSvc(View V)

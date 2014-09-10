@@ -15,5 +15,7 @@
     <string name="start_service">Start</string>
     <string name="stop_service">Stop</string>
     <string name="send_msg">Send message</string>
+    <string name="start_alarm">Start alarm</string>
+    <string name="stop_alarm">Stop alarm</string>
 
 </resources>

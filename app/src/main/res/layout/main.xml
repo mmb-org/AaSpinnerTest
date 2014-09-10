@@ -89,25 +89,43 @@
         android:id="@+id/buttonStartSvc"
         android:text="@string/start_service"
         android:layout_below="@id/buttonSend"
+        android:layout_toLeftOf="@+id/buttonStopSvc"
         android:onClick="onClickStartSvc"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonStopSvc"
+        android:id="@id/buttonStopSvc"
         android:text="@string/stop_service"
         android:layout_below="@id/buttonSend"
-        android:layout_toRightOf="@id/buttonStartSvc"
+        android:layout_toLeftOf="@+id/buttonSendMsg"
         android:onClick="onClickStopSvc"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonSendMsg"
+        android:id="@id/buttonSendMsg"
         android:text="@string/send_msg"
         android:layout_below="@id/buttonSend"
-        android:layout_toRightOf="@id/buttonStopSvc"
         android:layout_alignParentRight="true"
         android:onClick="onClickSendMsg"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonStartAlarm"
+        android:text="@string/start_alarm"
+        android:layout_below="@id/buttonSendMsg"
+        android:layout_toLeftOf="@+id/buttonStopAlarm"
+        android:onClick="startAlarm"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@id/buttonStopAlarm"
+        android:text="@string/stop_alarm"
+        android:layout_below="@id/buttonSendMsg"
+        android:layout_alignParentRight="true"
+        android:onClick="cancelAlarm"/>
 
 </RelativeLayout>

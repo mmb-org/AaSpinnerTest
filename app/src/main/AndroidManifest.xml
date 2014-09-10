@@ -21,6 +21,7 @@
             android:label="@string/title_activity_notification_receiver" >
         </activity>
         <service android:name=".MyService" android:enabled="true"/>
+        <receiver android:name=".AlarmReceiver"></receiver>
 
     </application>
 
