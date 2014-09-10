@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
     private final static String TAG = "SpinnerTest";
     public static Handler mUiHandler = null;
 
+    //test commit
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
