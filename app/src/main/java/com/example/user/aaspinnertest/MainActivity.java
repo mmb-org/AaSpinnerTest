@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
     private final static String TAG = "SpinnerTest";
     public static Handler mUiHandler = null;
 
-    //test commit
+    //test commit after fixing login error
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
