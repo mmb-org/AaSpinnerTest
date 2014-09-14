@@ -143,6 +143,7 @@
         android:id="@id/periodSvcStop"
         android:text="@string/period_svc_stop"
         android:layout_below="@id/buttonStopAlarm"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:onClick="stopPeriodSvc"/>
 
 </RelativeLayout>

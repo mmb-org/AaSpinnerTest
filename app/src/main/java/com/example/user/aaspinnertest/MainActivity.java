@@ -32,6 +32,10 @@ public class MainActivity extends Activity {
     private EditText favNoText;
     private final static String TAG = "SpinnerTest";
     public static Handler mUiHandler = null;
+
+    //variable for periodSvc
+    private AlarmManager alarm;
+
     //variables for Alarm
     private PendingIntent pendingIntent;
     private AlarmManager manager;
@@ -41,29 +45,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
-        //Start service using AlarmManager
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.SECOND, 10);
-        Intent intent = new Intent(this, TestService.class);
-        final PendingIntent pIntent = PendingIntent.getService(this, 11, intent, 0);
-
-        final AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        //for 30 min 60*60*1000
-        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),5*1000, pIntent);
-
-        //need to set listener to button in MainActivity as using onClick in main.xml doesn't stop AlarmManager
-        //possibly unable to identify the right PendingIntent. TODO find out how to identify PendingIntent properly
-        Button periodSvcStop = (Button) findViewById(R.id.periodSvcStop);
-        periodSvcStop.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                stopService(new Intent(getBaseContext(), TestService.class));
-                alarm.cancel(pIntent);
-            }
-        });
 
         //Retrieve a PendingIntent that will perform a broadcast
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
@@ -92,8 +73,27 @@ public class MainActivity extends Activity {
         addListenerToSpinner();
     }
 
+    //Start service using AlarmManager
     public void startPeriodSvc(View V){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.SECOND, 10);
+        Intent intent = new Intent(this, TestService.class);
+        final PendingIntent pIntent = PendingIntent.getService(this, 11, intent, 0);
+        alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        //for 5 sec
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),5*1000, pIntent);
+
         startService(new Intent(getBaseContext(), TestService.class));
+    }
+
+    //Stop service and AlarmManager
+    public void stopPeriodSvc(View V) {
+        Intent intent = new Intent(this, TestService.class);
+        final PendingIntent pIntent = PendingIntent.getService(this, 11, intent, 0);
+        alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        stopService(new Intent(getBaseContext(), TestService.class));
+        alarm.cancel(pIntent);
     }
 
     //set recurring alarms
