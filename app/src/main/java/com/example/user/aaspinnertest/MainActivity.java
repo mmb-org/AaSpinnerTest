@@ -24,8 +24,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 
-
-
 public class MainActivity extends Activity {
     private Spinner ageSpinner;
     private Spinner weightSpinner;
