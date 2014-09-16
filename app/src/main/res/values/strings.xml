@@ -19,5 +19,7 @@
     <string name="stop_alarm">Stop alarm</string>
     <string name="period_svc_start">Start period svc</string>
     <string name="period_svc_stop">Stop period svc</string>
+    <string name="start_CPU_wake">Start CPU Wake</string>
+    <string name="stop_CPU_wake">Stop CPU Wake</string>
 
 </resources>

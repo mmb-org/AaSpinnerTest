@@ -71,6 +71,16 @@ public class MainActivity extends Activity {
         addListenerToSpinner();
     }
 
+    public void startCpuWake(View V) {
+        Log.d(TAG, "startcpuwake");
+        startService(new Intent(this, StartCpuWake.class));
+    }
+    //TODO: see if can stop alarm by using msg codes instead of calling another service
+    public void stopCpuWake(View V) {
+        Log.d(TAG, "stopcpuwake");
+        startService(new Intent(this, StopCpuWake.class));
+    }
+
     //Start service using AlarmManager
     public void startPeriodSvc(View V){
         Calendar cal = Calendar.getInstance();

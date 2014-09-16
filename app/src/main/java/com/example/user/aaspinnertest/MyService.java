@@ -32,12 +32,6 @@ public class MyService extends Service {
     }
 
     @Override
-    public void onStart(Intent intent, int startId) {
-        Toast.makeText(this, "MyService started", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onStart");
-    }
-
-    @Override
     public int onStartCommand(Intent intent, int flags, int StartId) {
         MyThread myThread = new MyThread();
         myThread.start();

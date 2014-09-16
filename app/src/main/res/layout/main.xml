@@ -142,5 +142,23 @@
                 android:text="@string/period_svc_stop"
                 android:onClick="stopPeriodSvc"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="right">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/startCpuWake"
+                android:text="@string/start_CPU_wake"
+                android:onClick="startCpuWake"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/stopCpuWake"
+                android:text="@string/stop_CPU_wake"
+                android:onClick="stopCpuWake"/>
+            </LinearLayout>
     </LinearLayout>
 </ScrollView>
