@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
-public class StartCpuWake extends Service {
+public class StartCPUWake extends Service {
     private static final String TAG = "StartCpuWake";
     Alarm alarm = new Alarm();
     //for commit
-    public StartCpuWake(){
+    public StartCPUWake(){
     }
 
     public void onCreate() {
@@ -20,7 +20,7 @@ public class StartCpuWake extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "StartCpu onStart");
-        alarm.setAlarm(StartCpuWake.this);
+        alarm.setAlarm(StartCPUWake.this);
         Log.d(TAG, "StartCpu set alarm");
         return START_STICKY;
     }
