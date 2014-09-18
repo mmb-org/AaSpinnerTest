@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 20
     buildToolsVersion "20.0.0"
-    // Hi
 
     defaultConfig {
         applicationId "com.example.user.aaspinnertest"

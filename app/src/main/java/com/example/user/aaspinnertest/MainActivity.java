@@ -73,12 +73,12 @@ public class MainActivity extends Activity {
 
     public void startCpuWake(View V) {
         Log.d(TAG, "startcpuwake");
-        startService(new Intent(this, StartCpuWake.class));
+        startService(new Intent(this, StartCPUWake.class));
     }
     //TODO: see if can stop alarm by using msg codes instead of calling another service
     public void stopCpuWake(View V) {
         Log.d(TAG, "stopcpuwake");
-        startService(new Intent(this, StopCpuWake.class));
+        startService(new Intent(this, StopCPUWake.class));
     }
 
     //Start service using AlarmManager
