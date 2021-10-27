@@ -4,11 +4,8 @@ on:
   pull_request:
     types: [opened, labeled]
 
-permissions:
-  repository-projects: write
-
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 
 jobs:
   assign_one_project:
@@ -19,4 +16,4 @@ jobs:
       uses: srggrs/assign-one-project-github-action@1.3.1
       if: github.event.action == 'opened'
       with:
-        project: 'https://github.com/bn3101group7/AaSpinnerTest/projects/1'
+        project: 'https://github.com/orgs/bn3101group7/projects/3'
