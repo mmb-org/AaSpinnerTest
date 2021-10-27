@@ -3,6 +3,10 @@ name: Auto Assign PR to Project
 on:
   pull_request:
     types: [opened, labeled]
+
+permissions:
+  repository-projects: write
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
