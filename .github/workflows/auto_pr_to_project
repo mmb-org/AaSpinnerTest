@@ -1,12 +1,8 @@
 name: Auto Assign to Project(s)
 
 on:
-  issues:
-    types: [opened, labeled]
   pull_request:
     types: [opened, labeled]
-  issue_comment:
-    types: [created]
 env:
   MY_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -19,4 +15,4 @@ jobs:
       uses: srggrs/assign-one-project-github-action@1.2.1
       if: github.event.action == 'opened'
       with:
-        project: 'https://github.com/orgs/bn3101group7/projects/3'
+        project: 'https://github.com/bn3101group7/AaSpinnerTest/projects/1'
